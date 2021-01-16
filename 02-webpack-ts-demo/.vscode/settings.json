@@ -1,0 +1,19 @@
+{
+  "editor.formatOnSave": true,
+  "formatFiles.excludePattern": "node_modules,build,.gitignore,.editorconfig,.browserslistrc,yarn.lock",
+  "search.exclude": {
+    "**/build": true,
+    "**/node_modules": true
+  },
+  "files.exclude": {
+    "**/.cache": true,
+    "yarn.lock": true
+  },
+  "files.watcherExclude": {
+    "**/.cache": true,
+    "**/build": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "npm.autoDetect": "off",
+  "typescript.tsc.autoDetect": "off"
+}

@@ -1,0 +1,12 @@
+body {
+	background: #202020;
+	color: #fff;
+}
+
+#root > input {
+	transition: all 300ms ease-out;
+}
+
+#root:hover > input {
+	color: #00a732;
+}
