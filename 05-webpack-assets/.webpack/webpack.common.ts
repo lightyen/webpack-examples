@@ -42,7 +42,7 @@ const config: Configuration = {
 		rules: [
 			{
 				test: /\.ts$/,
-				exclude: /node_modules|\.worker\.ts$/,
+				exclude: /node_modules|__tests?__|\.test\.ts$|\.worker\.ts$/,
 				use: [
 					"babel-loader",
 					{
@@ -53,7 +53,7 @@ const config: Configuration = {
 			},
 			{
 				test: /\.js$/,
-				exclude: /node_modules|\.worker\.js$/,
+				exclude: /node_modules|__tests?__|\.test\.js$|\.worker\.js$/,
 				use: ["babel-loader"],
 			},
 			{

@@ -41,8 +41,8 @@ const config: Configuration = {
 	module: {
 		rules: [
 			{
-				test: /\.tsx?$/,
-				exclude: /node_modules|\.worker\.ts$/,
+				test: /\.tsx$/,
+				exclude: /node_modules|__tests?__|\.test\.ts$|\.worker\.ts$/,
 				use: [
 					"babel-loader",
 					{
@@ -52,8 +52,8 @@ const config: Configuration = {
 				],
 			},
 			{
-				test: /\.jsx?$/,
-				exclude: /node_modules|\.worker\.js$/,
+				test: /\.jsx$/,
+				exclude: /node_modules|__tests?__|\.test\.js$|\.worker\.js$/,
 				use: ["babel-loader"],
 			},
 			{
