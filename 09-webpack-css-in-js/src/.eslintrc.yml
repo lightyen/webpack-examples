@@ -7,18 +7,13 @@ extends:
   - "eslint:recommended"
   - "plugin:@typescript-eslint/eslint-recommended"
   - "plugin:@typescript-eslint/recommended"
-  - plugin:prettier/recommended
-  - prettier/@typescript-eslint
   - "plugin:react/recommended"
   - "plugin:react-hooks/recommended"
+  - "plugin:prettier/recommended"
 parserOptions:
   project: ./tsconfig.json
 rules:
-  spaced-comment:
-    - error
-    - always
-    - markers:
-        - "/"
+  spaced-comment: error
   no-var: error
   no-extra-bind: error
   prefer-arrow-callback: error
@@ -46,6 +41,11 @@ rules:
         delimiter: semi
         requireLast: false
   "@typescript-eslint/explicit-module-boundary-types": "off"
+   "@typescript-eslint/ban-types":
+      - error
+      - extendDefaults: true
+        types:
+          "{}": false
   react/display-name: "off"
   react/prop-types: "off"
   react-hooks/rules-of-hooks: error

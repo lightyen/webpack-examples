@@ -1,26 +1,36 @@
-import { useState } from "react"
-import { Global } from "@emotion/react"
-import tw, { css, GlobalStyles } from "twin.macro"
+import { ReactHTML, useState } from "react"
+import { tw } from "twind"
+import { css } from "twind/css"
 
 export default function App() {
-	return (
-		<>
-			<GlobalStyles />
-			<Global
-				styles={css`
-					body {
-						${tw`bg-gray-900`}
-					}
-				`}
-			/>
-			<DemoComponent />
-		</>
-	)
+	return <DemoComponent />
 }
 
-const Container = tw.div`p-4`
+interface CSSProp {
+	css?: ReturnType<typeof css>
+}
 
-const Input = tw.input`flex-1 appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent`
+type MyAttributes<T extends keyof ReactHTML> = Omit<
+	Exclude<Parameters<ReactHTML[T]>["0"], null | undefined>,
+	"className"
+> &
+	CSSProp
+
+function Container({ css, ...props }: MyAttributes<"div">) {
+	return <div className={tw(tw`p-4`, css)} {...props} />
+}
+
+function Input({ css, ...props }: MyAttributes<"input">) {
+	return (
+		<input
+			className={tw(
+				tw`flex-1 appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base text-red-500 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent`,
+				css,
+			)}
+			{...props}
+		/>
+	)
+}
 
 function DemoComponent() {
 	const [input, setInput] = useState("Webpack TypeScript Demo")
