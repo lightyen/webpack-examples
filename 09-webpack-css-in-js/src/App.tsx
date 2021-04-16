@@ -1,6 +1,7 @@
 import { ReactHTML, useState } from "react"
 import { tw } from "twind"
 import { css } from "twind/css"
+import "@twind/macro"
 
 export default function App() {
 	return <DemoComponent />
@@ -34,16 +35,17 @@ function Input({ css, ...props }: MyAttributes<"input">) {
 
 function DemoComponent() {
 	const [input, setInput] = useState("Webpack TypeScript Demo")
+	const p = "500"
 	return (
 		<Container>
-			<Input
-				spellCheck="false"
-				css={css`
-					max-width: 300px;
-				`}
-				onChange={e => setInput(e.target.value)}
-				value={input}
-			/>
+			<div
+				tw={{
+					"text-white": true,
+				}}
+			>
+				Text
+			</div>
+			<Input spellCheck="false" onChange={e => setInput(e.target.value)} value={input} />
 		</Container>
 	)
 }
