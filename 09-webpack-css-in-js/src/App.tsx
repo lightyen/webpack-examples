@@ -33,19 +33,23 @@ function Input({ css, ...props }: MyAttributes<"input">) {
 	)
 }
 
+import Time from "./Time"
+import { format } from "date-fns"
+const now = new Date()
 function DemoComponent() {
 	const [input, setInput] = useState("Webpack TypeScript Demo")
-	const p = "500"
 	return (
 		<Container>
-			<div
-				tw={{
-					"text-white": true,
-				}}
-			>
-				Text
+			<div className={tw`p-3`}>
+				<Input spellCheck="false" onChange={e => setInput(e.target.value)} value={input} />
 			</div>
-			<Input spellCheck="false" onChange={e => setInput(e.target.value)} value={input} />
+			<div className={tw`bg-white p-3 h-[500px] flex justify-center`}>
+				<div className={tw``}>
+					<span>Webpack TypeScript Demo</span>
+					<span> </span>
+					<Time text="Now" content={format(now, "Ppp")} />
+				</div>
+			</div>
 		</Container>
 	)
 }
