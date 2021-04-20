@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, RefObject } from "react"
 import { apply, tw } from "twind"
 import { css } from "twind/css"
 
@@ -27,50 +27,49 @@ export default function Time({ content, text }: { content: string; text: string 
 	const h = useRef<number>(0)
 	const k = useRef<number>(0)
 
+	function add(ref: RefObject<HTMLDivElement>, directive: ReturnType<typeof apply>) {
+		tw(directive)
+			.split(" ")
+			.forEach(c => ref?.current?.classList.add(c))
+	}
+
+	function remove(el: RefObject<HTMLDivElement>, directive: ReturnType<typeof apply>) {
+		tw(directive)
+			.split(" ")
+			.forEach(c => el.current?.classList.remove(c))
+	}
+
 	function enter() {
 		window.clearTimeout(k.current)
 		k.current = 0
-		tw(show)
-			.split(" ")
-			.forEach(c => tooltipRef.current?.classList.add(c))
+		add(tooltipRef, show)
 		h.current = window.setTimeout(() => {
-			tw(anime)
-				.split(" ")
-				.forEach(c => tooltipRef.current?.classList.add(c))
+			add(tooltipRef, anime)
 		}, delay)
 	}
 
-	function leave(delay: number) {
+	function leave() {
 		window.clearTimeout(h.current)
 		h.current = 0
 		k.current = window.setTimeout(() => {
-			tw(anime)
-				.split(" ")
-				.forEach(c => tooltipRef.current?.classList.remove(c))
+			remove(tooltipRef, anime)
 		}, delay)
 	}
 
 	return (
-		<span className={tw`relative`}>
-			<span className={tw`hover:(cursor-default)`} onPointerEnter={enter} onPointerLeave={() => leave(delay)}>
-				{text}
-			</span>
+		<time className={tw`relative hover:(cursor-default)`} onPointerEnter={enter} onPointerLeave={leave}>
+			{text}
 			<div
 				ref={tooltipRef}
 				className={tw(tooltip)}
-				onPointerEnter={enter}
-				onPointerLeave={() => leave(0)}
 				onTransitionEnd={() => {
-					// fade out
 					if (h.current == 0) {
-						tw(show)
-							.split(" ")
-							.forEach(c => tooltipRef.current?.classList.remove(c))
+						remove(tooltipRef, show)
 					}
 				}}
 			>
 				{content}
 			</div>
-		</span>
+		</time>
 	)
 }
