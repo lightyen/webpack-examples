@@ -70,21 +70,6 @@ const config: Configuration = {
 				use: ["worker-loader", "babel-loader"],
 			},
 			{
-				test: /\.css$/,
-				exclude: /node_modules/,
-				use: [
-					styleLoader,
-					{
-						loader: "css-loader",
-						options: {
-							url: true,
-							sourceMap: true,
-						},
-					},
-					"postcss-loader",
-				],
-			},
-			{
 				test: /\.(png|jpe?g|gif|ico)(\?.*)?$/i,
 				use: [
 					{

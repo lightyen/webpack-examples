@@ -7,7 +7,7 @@
     "build": "cross-env TS_NODE_PROJECT=\"tsconfig.json\" NODE_ENV=\"production\" webpack --config .webpack/webpack.prod.ts"
   },
   "devDependencies": {
-    "@babel/core": "7.13.15",
+    "@babel/core": "7.13.16",
     "@babel/plugin-transform-runtime": "7.13.15",
     "@babel/preset-env": "7.13.15",
     "@babel/preset-react": "7.13.13",
@@ -20,32 +20,29 @@
     "autoprefixer": "10.2.5",
     "babel-loader": "8.2.2",
     "cross-env": "7.0.3",
-    "css-loader": "5.2.1",
+    "css-loader": "5.2.4",
     "css-minimizer-webpack-plugin": "2.0.0",
     "eslint": "7.24.0",
     "eslint-config-prettier": "8.2.0",
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react": "7.23.2",
     "eslint-plugin-react-hooks": "4.2.0",
-    "eslint-webpack-plugin": "2.5.3",
+    "eslint-webpack-plugin": "2.5.4",
     "file-loader": "6.2.0",
-    "fork-ts-checker-webpack-plugin": "6.2.1",
+    "fork-ts-checker-webpack-plugin": "6.2.4",
     "html-webpack-plugin": "5.3.1",
     "js-yaml-loader": "1.2.2",
-    "mini-css-extract-plugin": "1.4.1",
-    "postcss": "8.2.10",
-    "postcss-import": "14.0.1",
-    "postcss-loader": "5.2.0",
+    "mini-css-extract-plugin": "1.5.0",
     "prettier": "2.2.1",
     "react-refresh": "0.10.0",
     "style-loader": "2.0.0",
     "terser-webpack-plugin": "5.1.1",
-    "ts-loader": "8.1.0",
+    "ts-loader": "9.1.0",
     "ts-node": "9.1.1",
     "ts-paths-resolve-plugin": "5.2.2",
     "typescript": "4.2.4",
     "url-loader": "4.1.1",
-    "webpack": "5.33.2",
+    "webpack": "5.35.0",
     "webpack-cli": "4.6.0",
     "webpack-dev-server": "3.11.2",
     "webpack-merge": "5.7.3",
@@ -53,7 +50,6 @@
     "worker-loader": "3.0.8"
   },
   "dependencies": {
-    "@popperjs/core": "^2.9.2",
     "@twind/content": "^0.1.0",
     "@twind/macro": "^2.1.0",
     "@types/react": "17.0.3",
@@ -62,6 +58,6 @@
     "date-fns": "^2.21.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "twind": "0.16.11"
+    "twind": "0.16.12"
   }
 }
